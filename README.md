@@ -17,10 +17,7 @@ Este é o meu primeiro Bot Node.JS com o Discord.js (https://discord.js.org) com
 <p>Gostaria muito de colocar todas as fontes dos meus estudos contudo ia ficar muito extenso..</p>
 
 # O Bot "Start"
-O bot possui um sistema simpático que suporta vários servidores simultaneamente armazenando os dados de cada em uma
-pasta com seu respectivos guild-id assim
-servidores diferentes podem adicionar frases de temas/filosos entre outros sem interverir na listagem de frases do outro
-servidor que utiliza o bot.
+O bot possui um sistema simpático que suporta vários servidores simultaneamente, armazenando os dados de cada em uma pasta com seu respectivos guild-id. Dessa forma, servidores diferentes podem adicionar frases de temas/filósofos, entre outros, sem interverir na listagem de frases do outro servidor que utiliza o bot.
 
 <h2 style="text-align: center;">Comandos</h2>
 <div>
