@@ -34,4 +34,4 @@ servidor que utiliza o bot.
 # Proximo projeto
 <p>Obrigado a todos que chegaram até o final, espero que esse codigo seja útil de alguma forma para vocês!</p>
 <p>Para o proximo bot que irei desenvolver gostaria de realizar um bot de algum Jogo que ainda não sei...</p>
-<p>Qualquer Feedback/Critica é bem vindo! obrigado a todos até mais</p>
+<p>Qualquer Feedback/Critica é bem vinda</p>
