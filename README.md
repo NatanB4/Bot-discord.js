@@ -1,6 +1,10 @@
 # Bot-discord.js
 Este é o meu primeiro Bot Node.JS com o Discord.js (https://discord.js.org) com a ideia focada em consumo de api.
 
+
+# News:
+Bot esta sendo re-criado com novas funcionalidades e refatoração de codigo.
+
 # Api Usadas
 <ul>
     <li>Nasa - https://api.nasa.gov</li>

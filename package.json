@@ -1,27 +1,28 @@
 {
-    "name": "new",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon ./index.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "axios": "^0.24.0",
-        "discord.js": "^13.5.0",
-        "express": "^4.17.2",
-        "flickr-sdk": "^4.0.0",
-        "formidable": "^3.2.1",
-        "jsonfile": "^6.1.0",
-        "mysql2": "^2.3.3",
-        "nodemon": "^2.0.15",
-        "pensador-api": "^1.0.0",
-        "reqres": "^3.0.1",
-        "request": "^2.88.2",
-        "sequelize": "^6.12.4"
-    }
+  "name": "zilean",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/start.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "discord.js": "^13.5.0",
+    "express": "^4.17.2",
+    "flickr-sdk": "^4.0.0",
+    "formidable": "^3.2.1",
+    "jsonfile": "^6.1.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "openai": "^3.0.0",
+    "pensador-api": "^1.0.0",
+    "reqres": "^3.0.1",
+    "request": "^2.88.2",
+    "sequelize": "^6.12.4"
+  }
 }
