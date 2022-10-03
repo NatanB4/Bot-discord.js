@@ -6,6 +6,7 @@ const client = new Client({
 require("dotenv").config();
 
 const commands = new CommandConfig().showCommands();
+
 client.on("ready", () => {
   console.log(`Pronto senhor! ${client.user.tag}`);
 });

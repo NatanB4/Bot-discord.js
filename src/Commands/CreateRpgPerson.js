@@ -1,29 +1,32 @@
-const openai = require("../Config/OpenAi")
+const openai = require("../Config/OpenAi");
 
 module.exports = class CreateRpgPerson {
-    constructor() {
-        this.name = 'criarpersonagem'
-        this.description = 'Cria um personagem de RPG'
-        this.usage = 'say <mensagem>'
-        this.aliases = ['criarpersonagem', 'criarp', 'createperson']
-    }
+  constructor() {
+    this.name = "criarpersonagem";
+    this.description = "Cria um personagem de RPG";
+    this.usage = "say <mensagem>";
+    this.aliases = ["criarpersonagem", "criarp", "createperson"];
+  }
 
-    async run(message, args) {
-        const completion =
-            await openai.createCompletion({
-                model: "text-davinci-002",
-                prompt: this.generatePrompt(args),
-                temperature: 0.6,
-                max_tokens: 200
-            });
+  /**
+   * @param {import('discord.js').Message} message
+   * @param {string[]} args
+   */
+  async run(message, args) {
+    const completion = await openai.createCompletion({
+      model: "text-davinci-002",
+      prompt: this.generatePrompt(args),
+      temperature: 0.6,
+      max_tokens: 200,
+    });
 
-        message.channel.send(completion.data.choices[0].text);
-    }
+    message.channel.send(completion.data.choices[0].text);
+  }
 
-    generatePrompt(args) {
-        return `Crie um personagem de RPG
+  generatePrompt(args) {
+    return `Crie um personagem de RPG
         
-        Nome: ${args.join(' ')}
+        Nome: ${args.join(" ")}
         Resultado: '
             Nome: Natsu
             Classe: Mago
@@ -33,7 +36,7 @@ module.exports = class CreateRpgPerson {
             Titulo: O Mago de Fogo
         '
 
-        Nome: ${args.join(' ')}
+        Nome: ${args.join(" ")}
         Resultado: 
             Nome: Luffy
             Classe: Guerreiro
@@ -43,10 +46,9 @@ module.exports = class CreateRpgPerson {
             Titulo: O Guerreiro de Haki
         '
 
-        Nome: ${args.join(' ')}
+        Nome: ${args.join(" ")}
         Resultado:
 
-       `
-
-    }
-}
+       `;
+  }
+};
