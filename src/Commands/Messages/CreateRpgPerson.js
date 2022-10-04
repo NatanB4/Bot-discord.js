@@ -1,4 +1,4 @@
-const openai = require("../Config/OpenAi");
+const openai = require("../../Config/OpenAi");
 
 module.exports = class CreateRpgPerson {
   constructor() {

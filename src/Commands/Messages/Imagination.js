@@ -1,4 +1,4 @@
-const openai = require("../Config/OpenAi");
+const openai = require("../../Config/OpenAi");
 
 module.exports = class Imagination {
   constructor() {
@@ -12,7 +12,6 @@ module.exports = class Imagination {
    * @param {string[]} args
    */
   async run(message, args) {
-    console.log("");
     const completion = await openai.createCompletion({
       model: "text-davinci-002",
       prompt: this.generatePrompt(args),

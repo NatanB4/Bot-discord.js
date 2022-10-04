@@ -1,4 +1,4 @@
-const openai = require("../Config/OpenAi");
+const openai = require("../../Config/OpenAi");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = class Opinion {
@@ -21,7 +21,8 @@ module.exports = class Opinion {
       max_tokens: 200,
     });
 
-    message.channel.send({
+    // Interactions
+    await message.channel.send({
       embeds: [this.messageEmbed(completion.data.choices[0].text)],
     });
   }
