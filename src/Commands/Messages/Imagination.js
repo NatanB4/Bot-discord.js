@@ -3,8 +3,8 @@ const openai = require("../../Config/OpenAi");
 module.exports = class Imagination {
   constructor() {
     this.name = "imaginação";
-    this.description = "Fala algo";
-    this.usage = "say <mensagem>";
+    this.description = "Imaginar algo";
+    this.usage = `imagine <mensagem>`;
     this.aliases = ["imaginação", "imagine", "imagination"];
   }
   /**

@@ -1,12 +1,16 @@
 const openai = require("../../Config/OpenAi");
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, EmbedBuilder } = require("discord.js");
+const CommandBase = require("../../Config/CommandBase");
+const OpenAiConfig = require("../../Config/OpenAi");
 
-module.exports = class Opinion {
+module.exports = class Opinion extends CommandBase {
   constructor() {
-    this.name = "Classification";
-    this.description = "Fala algo";
-    this.usage = "say <mensagem>";
-    this.aliases = ["classifique", "class", "classification"];
+    super({
+      name: "Classification",
+      description: "Classifica o sentimento de uma frase",
+      usage: `class <mensagem>`,
+      aliases: ["class"],
+    });
   }
 
   /**
@@ -14,53 +18,48 @@ module.exports = class Opinion {
    * @param {string[]} args
    */
   async run(message, args) {
-    const completion = await openai.createCompletion({
-      model: "text-davinci-002",
-      prompt: this.generatePrompt(args),
-      temperature: 0.6,
-      max_tokens: 200,
-    });
+    const messageToClassify = args.join(" ");
+    const completion = await new OpenAiConfig()
+      .setMaxTokens(1700)
+      .setTemperature(0.8)
+      .setPrompt(
+        `Classificação de sentimento Texto: 
 
-    // Interactions
+      Texto: 'Cara, eu odeio esse cara'
+      Sentimento: 'Ódio'
+
+      Texto: 'Cara, eu amo esse cara'
+      Sentimento: 'Amor'
+
+      Texto: 'eu estou triste'
+      Sentimento: 'Tristeza'
+
+      Texto: 'eu estou feliz'
+      Sentimento: 'Felicidade'
+
+      Texto: 'eu estou com raiva'
+      Sentimento: 'Raiva'
+
+      Texto: 'eu estou com medo'
+      Sentimento: 'Medo'
+
+      Texto: 'eu estou com nojo'
+      Sentimento: 'Nojo'
+
+      Texto: 'eu estou com surpresa'
+      Sentimento: 'Surpresa'
+
+      Texto: `
+      )
+      .getAnswer(messageToClassify);
+
+    const embed = this.infoEmbed(
+      "Texto: " + messageToClassify + "\n\n" + completion.trim()
+    );
+
     await message.channel.send({
-      embeds: [this.messageEmbed(completion.data.choices[0].text)],
+      embeds: [embed],
+      allowedMentions: { repliedUser: false },
     });
-  }
-
-  generatePrompt(args) {
-    return `Classifique o sentimento da Frase
-        
-        Frase: 'Eu amo cachorros'
-        Resultado: 'Positivo'
-
-        Frase: 'Não gostou e nem gosto de você'
-        Resultado: 'Neutro'
-        
-        Frase: 'Ainda acho que você é um lixo'
-        Resultado: 'Negativo'
-
-        Frase: ${args.join(" ")}
-        Resultado: `;
-  }
-
-  messageEmbed(description) {
-    const color = description.includes("Positivo")
-      ? "GREEN"
-      : description.includes("Negativo")
-      ? "RED"
-      : "YELLOW";
-
-    const embed = new MessageEmbed()
-      .setTitle("Classificação de Sentimento")
-      .addFields({
-        name: "Resultado: ",
-        value: `#${description.trim()}`,
-        inline: true,
-      })
-      .setTimestamp()
-      .setColor(color);
-
-    return embed;
-    // FILE gitignore
   }
 };

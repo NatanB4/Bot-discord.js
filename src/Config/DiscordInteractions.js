@@ -5,7 +5,9 @@ require("dotenv").config();
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
 const registerCommands = async () => {
-  const commandsInteractions = new CommandConfig().showCommandsInteractions();
+  const commandsInteractions = new CommandConfig()
+    .showCommandsInteractions()
+    .map((command) => command.request().toJSON());
 
   try {
     console.log(

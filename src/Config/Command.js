@@ -40,8 +40,8 @@ module.exports = class CommandConfig {
       .filter((file) => file.endsWith(".js"));
 
     for (const file of commandFiles) {
-      const command = require(`../Commands/Interactions/${file}`);
-      this.commandsInteractions.push(command.data.toJSON());
+      const command = new (require(`../Commands/Interactions/${file}`))();
+      this.commandsInteractions.push(command);
     }
 
     return this.commandsInteractions;

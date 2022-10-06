@@ -4,7 +4,7 @@ module.exports = class Opinion {
   constructor() {
     this.name = "opinião";
     this.description = "Fala algo";
-    this.usage = "say <mensagem>";
+    this.usage = `opniao <mensagem>`;
     this.aliases = ["opnião", "opniao", "opinião"];
   }
 
