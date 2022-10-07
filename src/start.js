@@ -11,12 +11,13 @@ const client = new Client({
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.DirectMessageReactions,
     GatewayIntentBits.DirectMessageTyping,
+    GatewayIntentBits.GuildVoiceStates,
   ],
 });
 require("dotenv").config();
 
 const commands = new CommandConfig().showCommandsMessages();
-// registerCommands();
+registerCommands();
 
 client.once("ready", async () => {
   console.log(`Pronto senhor! ${client.user.tag}`);
@@ -51,7 +52,7 @@ client.on("interactionCreate", async (interaction) => {
   const isCommandInteraction = new CommandConfig().showCommandsInteractions();
   for (const command of isCommandInteraction) {
     if (interaction.commandName === command.name) {
-      return command.run(interaction);
+      return command.run(interaction, client);
     }
   }
 });
